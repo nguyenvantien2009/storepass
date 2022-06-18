@@ -1,3 +1,3 @@
 # StorePass System
 
-[Dependencies](./dependencies)
+[Dependencies](./dependencies.md)
