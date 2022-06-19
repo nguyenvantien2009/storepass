@@ -2,8 +2,12 @@
   "name": "storepass",
   "version": "1.0.0",
   "description": "Store Password Management System (SPMS)",
-  "main": "index.js",
+  "bin": "pass.js",
+  "main": "pass.js",
   "scripts": {
+    "build": "tsc",
+    "start": "tsc && node dist/pass.js",
+    "account_add": "tsc && node dist/pass.js account add",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -44,10 +48,14 @@
     "sequelize": "^6.20.1",
     "sqlite3": "^5.0.8",
     "table": "^6.8.0",
+    "tslint": "^6.1.3",
+    "typescript": "^4.7.4",
     "uuid": "^8.3.2",
     "yargs": "^17.5.1"
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.1.1",
+    "@types/inquirer": "^8.2.1",
     "@types/yargs": "^17.0.10"
   }
 }
