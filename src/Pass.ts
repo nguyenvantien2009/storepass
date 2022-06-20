@@ -3,6 +3,14 @@ import { hideBin } from 'yargs/helpers'
 import inquirer from 'inquirer'
 import AES from 'crypto-js/aes';
 import Account from './accounts/models/account';
+import { Sequelize } from 'sequelize-typescript';
+
+const sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: './storepass.db',
+});
+sequelize.addModels([Account])
+
 
 yargs(hideBin(process.argv))
     .command('account add', 'Add new account.',
@@ -50,7 +58,8 @@ yargs(hideBin(process.argv))
             pass = AES.encrypt(pass, 'secret key 123').toString();
             
             // add new account.
-            await Account.create({name, pass});
+            await Account.create({ name, pass });
+            // await new Account({ name: 'dasdas', password: 'dada'}).save()
             
             const accounts = await Account.findAll({raw: true});
             console.log(console.table(accounts));

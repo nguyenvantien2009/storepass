@@ -1,32 +1,20 @@
 
-const { Sequelize, Model } = require('sequelize');
+import { Sequelize, Model, Table, Column } from 'sequelize-typescript';
 
 
-const sequelize = new Sequelize({
-    dialect: 'sqlite',
-    storage: './storepass.db'
-});
 
-// (async() => {
-//     try {
-        // await sequelize.authenticate();
-    	// console.log('Connection has been established successfully.');
+@Table
+export default class Account extends Model {
+    @Column
+    name?: string;
 
-        class Account extends Model {}
+    @Column
+    pass?: string;
 
-        Account.init({
-            name: Sequelize.STRING,
-            pass: Sequelize.TEXT
-        }, { sequelize, modelName: 'account' });
-        Account.sync({})
-
-        export default Account
-
-//         const accounts = await Account.findAll();
-//         console.log(JSON.stringify(accounts, null, 2));
-//     } catch (error) {
-//     	console.error('Unable to connect to the database:', error);
-//     }
-// })();
+    // constructor(password: string) {
+    //     super();
+    //     this.password = password
+    // }
+}
 
 
